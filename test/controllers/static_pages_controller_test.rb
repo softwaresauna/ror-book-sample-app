@@ -24,6 +24,23 @@ class StaticPagesControllerTest < ActionDispatch::IntegrationTest
 
     assert_select 'title', expected_title('About')
 
+    end
+
+  test 'should get contact' do
+    get static_pages_contact_url
+    assert_response :success
+
+    assert_select 'title', expected_title('Contact')
+
+  end
+
+  test 'root should go to home' do
+
+    get root_url
+    assert_response :success
+
+    assert_select 'title', expected_title('Home')
+
   end
 
   def expected_title(prefix)
